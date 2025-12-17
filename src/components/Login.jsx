@@ -19,7 +19,7 @@ const Login = () => {
 
         try {
             if (isLogin) {
-                const response = await axios.post('http://localhost:3000/auth/login', {
+                const response = await axios.post('https://react-backend-ecom.onrender.com/auth/login', {
                     email,
                     password
                 })
@@ -42,7 +42,7 @@ const Login = () => {
                     navigate('/products')
                 }
             } else {
-                const response = await axios.post('http://localhost:3000/auth/register', {
+                const response = await axios.post('https://react-backend-ecom.onrender.com/auth/register', {
                     username,
                     email,
                     password

@@ -13,7 +13,7 @@ const Orders = () => {
 
         const fetchOrders = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/orders');
+                const response = await axios.get('https://react-backend-ecom.onrender.com/orders');
                 setOrders(response.data.orders || response.data || []);
             } catch (error) {
                 console.error('Error fetching orders:', error);
