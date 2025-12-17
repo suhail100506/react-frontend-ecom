@@ -19,7 +19,7 @@ const Admin = () => {
 
     const handleUpdatePrice = async () => {
         try {
-            await axios.put(`https://react-backend-ecom.onrender.com/products/${editingProduct._id}`, {
+            await axios.put(`http://localhost:3000/products/${editingProduct._id}`, {
                 ...editingProduct,
                 price: parseFloat(newPrice),
                 originalPrice: parseFloat(newOriginalPrice)
@@ -41,7 +41,7 @@ const Admin = () => {
     const handleDeleteProduct = async (productId) => {
         if (window.confirm('Are you sure you want to delete this product?')) {
             try {
-                await axios.delete(`https://react-backend-ecom.onrender.com/products/${productId}`);
+                await axios.delete(`http://localhost:3000/products/${productId}`);
                 toast.success('Product deleted successfully!');
                 window.location.reload();
             } catch (error) {
