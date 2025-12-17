@@ -67,9 +67,9 @@ const Orders = () => {
                                         </p>
                                     </div>
                                     <span className={`px-3 py-1 rounded-full text-sm font-semibold ${order.status === 'delivered' ? 'bg-green-100 text-green-800' :
-                                            order.status === 'shipped' ? 'bg-blue-100 text-blue-800' :
-                                                order.status === 'processing' ? 'bg-purple-100 text-purple-800' :
-                                                    'bg-yellow-100 text-yellow-800'
+                                        order.status === 'shipped' ? 'bg-blue-100 text-blue-800' :
+                                            order.status === 'processing' ? 'bg-purple-100 text-purple-800' :
+                                                'bg-yellow-100 text-yellow-800'
                                         }`}>
                                         {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
                                     </span>

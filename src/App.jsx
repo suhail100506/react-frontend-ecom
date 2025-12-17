@@ -29,7 +29,7 @@ const App = () => {
         try {
           const cartResponse = await axios.get('http://localhost:3000/carts');
           const cartData = cartResponse.data.cart;
-          
+
           const transformedCart = cartData?.products?.map(item => ({
             _id: item._id,
             productId: item.product._id,
@@ -38,7 +38,7 @@ const App = () => {
             image: item.product.image,
             quantity: item.quantity
           })) || [];
-          
+
           setCart(transformedCart);
         } catch (error) {
           console.error('Error fetching cart:', error);
@@ -106,7 +106,7 @@ const App = () => {
         image: item.product.image,
         quantity: item.quantity
       })) || [];
-      
+
       setCart(transformedCart);
     } catch (error) {
       console.error('Error adding to cart:', error);
@@ -141,7 +141,7 @@ const App = () => {
           image: item.product.image,
           quantity: item.quantity
         })) || [];
-        
+
         setCart(transformedCart);
       } catch (error) {
         console.error('Error updating quantity:', error);
@@ -157,7 +157,7 @@ const App = () => {
   const removeFromCart = async (cartItemId) => {
     try {
       const response = await axios.delete(`http://localhost:3000/carts/${cartItemId}`);
-      
+
       const cartData = response.data.cart;
       const transformedCart = cartData?.products?.map(item => ({
         _id: item._id,
@@ -167,7 +167,7 @@ const App = () => {
         image: item.product.image,
         quantity: item.quantity
       })) || [];
-      
+
       setCart(transformedCart);
     } catch (error) {
       console.error('Error removing from cart:', error);
@@ -179,7 +179,7 @@ const App = () => {
     try {
       const cartResponse = await axios.get('http://localhost:3000/carts');
       const cartData = cartResponse.data.cart;
-      
+
       const transformedCart = cartData?.products?.map(item => ({
         _id: item._id,
         productId: item.product._id,
@@ -188,7 +188,7 @@ const App = () => {
         image: item.product.image,
         quantity: item.quantity
       })) || [];
-      
+
       setCart(transformedCart);
     } catch (error) {
       console.error('Error refreshing cart:', error);
