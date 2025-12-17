@@ -27,7 +27,7 @@ const App = () => {
 
         // Fetch cart after setting token
         try {
-          const cartResponse = await axios.get('http://localhost:3000/carts');
+          const cartResponse = await axios.get('https://react-backend-ecom.onrender.com/carts');
           const cartData = cartResponse.data.cart;
           
           const transformedCart = cartData?.products?.map(item => ({
@@ -73,7 +73,7 @@ const App = () => {
 
   const addProduct = async (newProduct) => {
     try {
-      await axios.post('http://localhost:3000/products', {
+      await axios.post('https://react-backend-ecom.onrender.com/products', {
         name: newProduct.name,
         image: newProduct.image || "",
         price: parseFloat(newProduct.sellingPrice),
@@ -83,7 +83,7 @@ const App = () => {
         stock: parseInt(newProduct.stock) || 0
       });
 
-      const productsResponse = await axios.get('http://localhost:3000/products');
+      const productsResponse = await axios.get('https://react-backend-ecom.onrender.com/products');
       setProducts(productsResponse.data);
     } catch (error) {
       console.error('Error adding product:', error);
@@ -92,7 +92,7 @@ const App = () => {
 
   const addToCart = async (product) => {
     try {
-      const response = await axios.post('http://localhost:3000/carts', {
+      const response = await axios.post('https://react-backend-ecom.onrender.com/carts', {
         productId: product._id || product.id,
         quantity: 1
       });
@@ -128,7 +128,7 @@ const App = () => {
       removeFromCart(cartItemId);
     } else {
       try {
-        const response = await axios.put(`http://localhost:3000/carts/${cartItemId}`, {
+        const response = await axios.put(`https://react-backend-ecom.onrender.com/carts/${cartItemId}`, {
           quantity: newQuantity
         });
 
@@ -156,7 +156,7 @@ const App = () => {
 
   const removeFromCart = async (cartItemId) => {
     try {
-      const response = await axios.delete(`http://localhost:3000/carts/${cartItemId}`);
+      const response = await axios.delete(`https://react-backend-ecom.onrender.com/carts/${cartItemId}`);
       
       const cartData = response.data.cart;
       const transformedCart = cartData?.products?.map(item => ({
@@ -177,7 +177,7 @@ const App = () => {
 
   const refreshCart = async () => {
     try {
-      const cartResponse = await axios.get('http://localhost:3000/carts');
+      const cartResponse = await axios.get('https://react-backend-ecom.onrender.com/carts');
       const cartData = cartResponse.data.cart;
       
       const transformedCart = cartData?.products?.map(item => ({

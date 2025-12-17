@@ -37,7 +37,7 @@ const Cart = () => {
                 total: total + 40
             };
 
-            await axios.post('http://localhost:3000/orders', orderData);
+            await axios.post('https://react-backend-ecom.onrender.com/orders', orderData);
             toast.success('Order placed successfully!');
             await refreshCart();
             setTimeout(() => navigate('/orders'), 1000);
