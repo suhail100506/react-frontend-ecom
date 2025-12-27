@@ -2,49 +2,19 @@ import { useContext } from "react";
 import { AppContext } from "../App";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import axios from "axios";
 
 const Cart = () => {
-    const { cart, updateQuantity, removeFromCart, refreshCart } = useContext(AppContext);
+    const { cart, updateQuantity, removeFromCart } = useContext(AppContext);
     const navigate = useNavigate();
     const total = cart?.reduce((sum, item) => sum + (item.price * item.quantity), 0) || 0;
 
-    const handleCheckout = async () => {
+    const handleCheckout = () => {
         if (!cart || cart.length === 0) {
             toast.error('Your cart is empty');
             return;
         }
 
-        try {
-            const orderData = {
-                products: cart.map(item => ({
-                    product: item.productId,
-                    name: item.name,
-                    price: item.price,
-                    image: item.image,
-                    quantity: item.quantity
-                })),
-                shippingInfo: {
-                    fullName: sessionStorage.getItem('username') || 'Guest',
-                    email: 'customer@example.com',
-                    address: 'Default Address',
-                    city: 'Default City',
-                    zipCode: '000000'
-                },
-                paymentMethod: 'cod',
-                subtotal: total,
-                shipping: 40,
-                total: total + 40
-            };
-
-            await axios.post('https://react-backend-ecom.onrender.com/orders', orderData);
-            toast.success('Order placed successfully!');
-            await refreshCart();
-            setTimeout(() => navigate('/orders'), 1000);
-        } catch (error) {
-            const errorMsg = error.response?.data?.error || error.response?.data?.message || 'Failed to place order';
-            toast.error(errorMsg);
-        }
+        navigate('/payment', { state: { total } });
     };
 
     return (

@@ -9,6 +9,7 @@ import Cart from './components/Cart'
 import Login from './components/Login'
 import Orders from './components/Orders'
 import Admin from './components/Admin'
+import Payment from './components/Payment'
 import ProtectedRoute from './components/ProtectedRoute'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -22,6 +23,7 @@ createRoot(document.getElementById('root')).render(
           <Route index element={<Home />} />
           <Route path="products" element={<ProductsPage />} />
           <Route path="cart" element={<Cart />} />
+          <Route path="payment" element={<Payment />} />
           <Route path="login" element={<Login />} />
           <Route
             path="orders"
